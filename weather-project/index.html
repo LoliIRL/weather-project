@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp - Погода в любом городе</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-card">
+            <div class="welcome-icon">🌤️</div>
+            <h1>Добро пожаловать в WeatherApp</h1>
+            <p>Узнайте погоду в любом городе мира</p>
+            <div class="name-input-group">
+                <input type="text" id="userNameInput" placeholder="Введите ваше имя" maxlength="30">
+                <button id="startBtn" class="btn-primary">Далее ➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainScreen" class="main-screen" style="display: none;">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <span class="logo-icon">🌤️</span>
+                        <span class="logo-text">WeatherApp</span>
+                    </div>
+                    <div id="welcomeMessage" class="welcome-message"></div>
+                    <button id="logoutBtn" class="logout-btn">🚪 Выйти</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="search-section">
+                    <div class="search-card">
+                        <h2>Поиск погоды</h2>
+                        <div class="search-group">
+                            <input type="text" id="cityInput" placeholder="Введите название города">
+                            <button id="searchBtn" class="btn-primary">🔍 Найти</button>
+                        </div>
+                        <div class="quick-cities">
+                            <span>Быстрый выбор:</span>
+                            <button class="quick-city" data-city="Moscow">Москва</button>
+                            <button class="quick-city" data-city="London">Лондон</button>
+                            <button class="quick-city" data-city="New York">Нью-Йорк</button>
+                            <button class="quick-city" data-city="Tokyo">Токио</button>
+                            <button class="quick-city" data-city="Paris">Париж</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="favorites-section" id="favoritesSection" style="display: none;">
+                    <div class="favorites-card">
+                        <div class="section-header">
+                            <h2>⭐ Избранные города</h2>
+                            <button id="clearFavoritesBtn" class="btn-small btn-danger">Очистить всё</button>
+                        </div>
+                        <div id="favoritesList" class="favorites-list"></div>
+                    </div>
+                </div>
+
+                <div id="currentWeather" class="weather-card" style="display: none;">
+                    <div class="weather-header">
+                        <div>
+                            <h2 id="cityName"></h2>
+                            <p id="weatherDate"></p>
+                        </div>
+                        <button id="addToFavoritesBtn" class="btn-favorite">⭐ Добавить в избранное</button>
+                    </div>
+                    <div class="weather-main">
+                        <div class="weather-temp">
+                            <span id="temperature" class="temp-value"></span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <div class="weather-condition">
+                            <img id="weatherIcon" class="weather-icon" alt="">
+                            <span id="condition"></span>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-label">💧 Влажность</span>
+                            <span id="humidity" class="detail-value"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">💨 Ветер</span>
+                            <span id="wind" class="detail-value"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">🎯 Давление</span>
+                            <span id="pressure" class="detail-value"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">👁️ Видимость</span>
+                            <span id="visibility" class="detail-value"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="forecastSection" class="forecast-section" style="display: none;">
+                    <h2>📅 Прогноз на 7 дней</h2>
+                    <div class="forecast-controls">
+                        <label>
+                            <input type="checkbox" id="tempFilterCheckbox"> 
+                            Показать только дни с температурой выше 15°C
+                        </label>
+                        <div class="sort-buttons">
+                            <button id="sortByDateBtn" class="sort-btn">📅 По дате</button>
+                            <button id="sortByTempBtn" class="sort-btn">🌡️ По температуре</button>
+                        </div>
+                    </div>
+                    <div id="forecastList" class="forecast-list"></div>
+                </div>
+
+                <div id="statsSection" class="stats-section" style="display: none;">
+                    <h2>📊 Статистика</h2>
+                    <div class="stats-grid" id="statsGrid"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 WeatherApp | Данные предоставлены Open-Meteo API</p>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
